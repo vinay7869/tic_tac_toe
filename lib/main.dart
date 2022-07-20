@@ -4,6 +4,7 @@ import 'package:tic_tac_toe/help.dart';
 import 'package:tic_tac_toe/play.dart';
 
 void main() {
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
