@@ -19,8 +19,8 @@ class _PlayPageState extends State<PlayPage> {
     '-',
     '-',
   ];
-  var winner = '';
-  var currentPlayer = 'X';
+  String winner = '';
+  String currentPlayer = 'X';
 
   void input(index) {
     if (grid[index] == '-') {
