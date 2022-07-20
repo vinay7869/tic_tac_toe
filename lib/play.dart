@@ -20,7 +20,7 @@ class _PlayPageState extends State<PlayPage> {
     '-',
   ];
   String winner = '';
-  String currentPlayer = 'X';
+  String currentPlayer = 'O';
 
   void input(index) {
     if (grid[index] == '-') {
