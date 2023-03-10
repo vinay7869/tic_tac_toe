@@ -42,7 +42,8 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           GestureDetector(
             onTap: () {
-             Navigator.push(context, MaterialPageRoute(builder: (context) => const PlayPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const PlayPage()));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),
@@ -69,7 +70,8 @@ class _MyHomePageState extends State<MyHomePage> {
           const SizedBox(height: 20),
           GestureDetector(
             onTap: () {
-              Navigator.push(context, MaterialPageRoute(builder: (context) => const HelpPage()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => const HelpPage()));
             },
             child: Container(
               padding: const EdgeInsets.symmetric(horizontal: 90, vertical: 20),

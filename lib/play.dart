@@ -127,7 +127,8 @@ class _PlayPageState extends State<PlayPage> {
                   restart();
                 },
                 style: ElevatedButton.styleFrom(
-                    primary: Colors.pink, padding: const EdgeInsets.all(10)),
+                    backgroundColor: Colors.pink,
+                    padding: const EdgeInsets.all(10)),
                 icon: const Icon(Icons.restart_alt_rounded),
                 label: const Text('Play again',
                     style: TextStyle(
