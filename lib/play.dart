@@ -20,17 +20,14 @@ class _PlayPageState extends State<PlayPage> {
     '-',
   ];
   String winner = '';
-  String currentPlayer = 'O';
+  String currentPlayer = 'X';
 
   void input(index) {
     if (grid[index] == '-') {
       setState(() {
         grid[index] = currentPlayer;
-        bool gameEnded = result(grid[index]);
-
-        if (!gameEnded) {
-          currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
-        }
+        result(currentPlayer);
+        currentPlayer = currentPlayer == 'X' ? 'O' : 'X';
       });
     }
   }
@@ -56,9 +53,9 @@ class _PlayPageState extends State<PlayPage> {
         winner = currentPlayer;
       });
       return true;
+    } else {
+      return false;
     }
-
-    return false;
   }
 
   void restart() {
@@ -108,17 +105,14 @@ class _PlayPageState extends State<PlayPage> {
                       crossAxisSpacing: 10,
                       mainAxisSpacing: 10),
                   itemCount: grid.length,
-                  itemBuilder: (context, index) => Material(
+                  itemBuilder: (context, index) => MaterialButton(
+                        splashColor: Colors.black,
                         color: Colors.purple,
-                        child: InkWell(
-                          onTap: () {
-                            input(index);
-                          },
-                          splashColor: Colors.pink,
-                          child: Center(
-                              child: Text(grid[index],
-                                  style: const TextStyle(fontSize: 44))),
-                        ),
+                        onPressed: () {
+                          input(index);
+                        },
+                        child: Text(grid[index],
+                            style: const TextStyle(fontSize: 44)),
                       )),
             ),
             const SizedBox(height: 40),
