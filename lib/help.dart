@@ -11,8 +11,8 @@ class HelpPage extends StatelessWidget {
         backgroundColor: Colors.purple,
       ),
       body: const Center(
-        child:
-            Text('Itna bhi nahi aata to marja', style: TextStyle(fontSize: 33)),
+        child: Text('Itna bhi nahi aata to marja',
+            textAlign: TextAlign.center, style: TextStyle(fontSize: 33)),
       ),
     );
   }

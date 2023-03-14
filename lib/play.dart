@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tic_tac_toe/main.dart';
 
 class PlayPage extends StatefulWidget {
   const PlayPage({Key? key}) : super(key: key);
@@ -32,6 +33,34 @@ class _PlayPageState extends State<PlayPage> {
     }
   }
 
+  void showAlertBox() {
+    showDialog(
+      context: context,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+          title: Text('$winner won the game'),
+          actions: [
+            TextButton(
+                onPressed: () => Navigator.pushAndRemoveUntil(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const MyHomePage(),
+                    ),
+                    (route) => false),
+                child: const Text('Quit')),
+            TextButton(
+                onPressed: () {
+                  restart();
+                  Navigator.pop(context);
+                },
+                child: const Text('Play again')),
+          ],
+        );
+      },
+    );
+  }
+
   bool formula(i1, i2, i3, sign) {
     if (grid[i1] == sign && grid[i2] == sign && grid[i3] == sign) {
       return true;
@@ -51,6 +80,7 @@ class _PlayPageState extends State<PlayPage> {
         formula(2, 4, 6, currentsign)) {
       setState(() {
         winner = currentPlayer;
+        showAlertBox();
       });
       return true;
     } else {
@@ -89,15 +119,17 @@ class _PlayPageState extends State<PlayPage> {
       ),
       body: Center(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (winner != '')
               Text('$winner won the game',
                   style: const TextStyle(
                       fontWeight: FontWeight.bold, fontSize: 27)),
+            const SizedBox(height: 30),
             Container(
-              constraints: const BoxConstraints(maxHeight: 300, maxWidth: 300),
+              constraints: const BoxConstraints(maxHeight: 320, maxWidth: 320),
               color: Colors.black,
-              margin: const EdgeInsets.all(20),
+              padding: const EdgeInsets.all(10),
               child: GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -106,7 +138,7 @@ class _PlayPageState extends State<PlayPage> {
                       mainAxisSpacing: 10),
                   itemCount: grid.length,
                   itemBuilder: (context, index) => MaterialButton(
-                        splashColor: Colors.black,
+                        splashColor: Colors.pink,
                         color: Colors.purple,
                         onPressed: () {
                           input(index);
@@ -128,7 +160,7 @@ class _PlayPageState extends State<PlayPage> {
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
-                        fontSize: 22)))
+                        fontSize: 18)))
           ],
         ),
       ),
