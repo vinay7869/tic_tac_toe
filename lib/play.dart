@@ -20,6 +20,7 @@ class _PlayPageState extends State<PlayPage> {
     '-',
     '-',
   ];
+
   String winner = '';
   String currentPlayer = 'X';
 
@@ -138,7 +139,6 @@ class _PlayPageState extends State<PlayPage> {
                       mainAxisSpacing: 10),
                   itemCount: grid.length,
                   itemBuilder: (context, index) => MaterialButton(
-                        splashColor: Colors.pink,
                         color: Colors.purple,
                         onPressed: () {
                           input(index);
